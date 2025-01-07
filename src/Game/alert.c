@@ -10,7 +10,7 @@ short   SECTION(".sbss") GM_RadarMode_800ABA80;
 short   SECTION(".sbss") word_800ABA82;
 
 char byte_8009D698[] = {0, 0, 1, 2};
-char GM_NoiseSound_800B76E0[4][3];
+extern char GM_NoiseSound_800B76E0[4][3];
 
 extern int   GM_GameOverVox;
 extern int   dword_800ABA58;

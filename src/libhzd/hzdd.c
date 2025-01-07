@@ -123,7 +123,7 @@ HZD_HDL *HZD_MakeHandler(HZD_HEADER *hzd, int areaIndex, int dynamic_segments, i
         hzdMap->area = &hzd->areas[areaIndex];
         hzdMap->dynamic_queue_index = 0;
         hzdMap->dynamic_floor_index = 0;
-        (int)hzdMap->zones = *(int *)hzd;
+        hzdMap->zones = (HZD_ZON*)(*(int *)hzd);
 
         trig = hzdMap->area->triggers;
         for (i = hzdMap->area->n_triggers; i > 0; i--)

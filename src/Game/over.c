@@ -8,7 +8,9 @@ extern int GV_Clock_800AB920;
 extern int GV_PauseLevel_800AB928;
 
 extern GV_PAD           *GM_CurrentPadData_800AB91C;
+#ifndef PSX_DEV_EXE
 GV_PAD *SECTION(".sbss") GM_CurrentPadData_800AB91C;
+#endif
 
 int GM_GameOverVox = -1;
 

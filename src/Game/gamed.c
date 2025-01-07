@@ -30,10 +30,14 @@
 
 //both below are defined in gvd.c
 extern char            *GM_StageName_800AB918;
+#ifndef PSX_DEV_EXE
 char                   *GM_StageName_800AB918;
+#endif
 
 extern GV_PAD                  *GM_CurrentPadData_800AB91C;
+#ifndef PSX_DEV_EXE
 GV_PAD        *SECTION(".sbss") GM_CurrentPadData_800AB91C;
+#endif
 
 int GM_GameStatus = 0;
 int GM_LoadRequest = 0;

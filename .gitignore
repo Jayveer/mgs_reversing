@@ -39,3 +39,8 @@ src/.vscode/settings.json
 *.swo
 research/
 .cache/
+.sentry-native
+obj_psx_dev
+third_party/psyq/include/*
+third_party/psyq/lib/*
+!third_party/psyq/include/inline_n.h

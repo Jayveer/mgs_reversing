@@ -35,7 +35,9 @@ int  SECTION(".sbss") gBinds_800ABA60;
 int  SECTION(".sbss") gBindsCount_800ABA64;
 
 extern char *GM_StageName_800AB918;
+#ifndef PSX_DEV_EXE
 char         SECTION(".sbss") * GM_StageName_800AB918;
+#endif
 
 STATIC int GM_Command_light(unsigned char *);
 STATIC int GM_Command_camera(unsigned char *);

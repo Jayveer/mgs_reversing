@@ -88,27 +88,27 @@ int DG_LoadInitKmd(unsigned char *buf, int id)
     {
         if (current->vertices)
         {
-            (char *)current->vertices += (unsigned int)kmd;
+            current->vertices = (SVECTOR*)((char *)current->vertices + (unsigned int)kmd);
         }
         if (current->vindices)
         {
-            (char *)current->vindices += (unsigned int)kmd;
+            current->vindices = (unsigned char*)((char *)current->vindices + (unsigned int)kmd);
         }
         if (current->normals)
         {
-            (char *)current->normals += (unsigned int)kmd;
+            current->normals = (SVECTOR*)((char *)current->normals + (unsigned int)kmd);
         }
         if (current->nindices)
         {
-            (char *)current->nindices += (unsigned int)kmd;
+            current->nindices = (unsigned char*)((char *)current->nindices + (unsigned int)kmd);
         }
         if (current->texcoords)
         {
-            (char *)current->texcoords += (unsigned int)kmd;
+            current->texcoords = (unsigned char*)((char *)current->texcoords + (unsigned int)kmd);
         }
         if (current->materials)
         {
-            (char *)current->materials += (unsigned int)kmd;
+            current->materials = (unsigned short*)((char *)current->materials + (unsigned int)kmd);
         }
         if (current->parent >= 0)
         {
@@ -385,31 +385,30 @@ int DG_LoadInitKmdar(unsigned char *buf, int id)
 
         while (--numMeshes >= 0)
         {
-            (char *)kmdObject->vertices += offset;
+            kmdObject->vertices = (SVECTOR*)((char *)kmdObject->vertices + offset);
             if (kmdObject->vindices)
             {
-                (char *)kmdObject->vindices += offset;
+                kmdObject->vindices = (unsigned char*)((char *)kmdObject->vindices + offset);
             }
             if (kmdObject->normals)
             {
-                (char *)kmdObject->normals += offset;
+                kmdObject->normals = (SVECTOR*)((char *)kmdObject->normals + offset);
             }
             if (kmdObject->nindices)
             {
-                (char *)kmdObject->nindices += offset;
+                kmdObject->nindices = (unsigned char*)((char *)kmdObject->nindices + offset);
             }
             if (kmdObject->texcoords)
             {
-                (char *)kmdObject->texcoords += offset;
+                kmdObject->texcoords = (unsigned char*)((char *)kmdObject->texcoords + offset);
             }
             if (kmdObject->materials)
             {
-                (char *)kmdObject->materials += offset;
+                kmdObject->materials = (unsigned short*)((char *)kmdObject->materials + offset);
             }
             if (kmdObject->parent >= 0)
             {
-                DG_LinkModelToParent(kmdObject,
-                                            &zmdObject->objects[kmdObject->parent]);
+                DG_LinkModelToParent(kmdObject, &zmdObject->objects[kmdObject->parent]);
             }
             ++kmdObject;
         }

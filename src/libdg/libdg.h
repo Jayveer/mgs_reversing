@@ -381,7 +381,7 @@ enum DG_PRIM_TYPE
     DG_PRIM_MAX         // 24
 };
 
-enum DG_CHANL
+enum DG_CHANL_FUNCS
 {
     DG_CHANL_SCREEN,
     DG_CHANL_BOUND,

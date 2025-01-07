@@ -19,7 +19,9 @@ extern int GV_PauseLevel_800AB928;
 extern int GM_LoadComplete_800ABA38;
 
 extern GV_PAD *GM_CurrentPadData_800AB91C;
+#ifndef PSX_DEV_EXE
 GV_PAD        *GM_CurrentPadData_800AB91C;
+#endif
 
 void menu_texture_init_8003CC94(MenuWork *work);
 void menu_radar_init_8003B474(MenuWork *work);

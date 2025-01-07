@@ -68,7 +68,9 @@ extern CONTROL        *tenage_ctrls_800BDD30[16];
 extern HITTABLE           c4_actors_800BDD78[C4_COUNT];
 extern HITTABLE      stru_800BDE78[8];
 extern unsigned char      gBulNames_800BDC78[64];
+#ifndef PSX_DEV_EXE
 unsigned char             gBulNames_800BDC78[64];
+#endif
 extern int                dword_8009F440;
 extern int                dword_8009F444;
 extern int                dword_8009F46C[];

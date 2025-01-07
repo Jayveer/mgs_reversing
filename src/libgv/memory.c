@@ -906,8 +906,14 @@ void GV_SaveResidentTop(void)
 void *GV_AllocResidentMemory(long size)
 {
 #ifdef DEV_EXE
+
+#ifdef PSX_DEV_EXE
+    // linker-defined symbol
+    extern unsigned char __bss_end[];
+#else
     // linker-defined symbol
     extern unsigned char _bss_orgend[];
+#endif
 #endif
 
     // Align the size to 4 bytes
@@ -919,7 +925,12 @@ void *GV_AllocResidentMemory(long size)
 #ifdef DEV_EXE
     // dev_exe has to compare to _bss_orgend since the overlay base pointer
     // used by the OG code will be pointing somewhere in the .data section.
+#ifdef PSX_DEV_EXE
+    // linker-defined symbol
+    if (GV_ResidentMemoryBottom_800AB940 < __bss_end)
+#else
     if (GV_ResidentMemoryBottom_800AB940 < _bss_orgend)
+#endif
 #else
     // BUG: the overlay can potentially be alloc'd over with no warning.
     if (GV_ResidentMemoryBottom_800AB940 < gOverlayBase_800AB9C8)

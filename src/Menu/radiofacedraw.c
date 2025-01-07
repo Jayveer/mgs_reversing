@@ -13,8 +13,10 @@
 STATIC RECT rect_800AB6D8 = {1008, 432, 5, 20};
 STATIC int  dword_800AB6E0 = 0;
 
-menu_chara_struct *dword_800ABB38;
+extern menu_chara_struct *dword_800ABB38;
+#ifndef PSX_DEV_EXE
 menu_chara_struct *SECTION(".sbss") dword_800ABB38; // force gp
+#endif
 
 int SECTION(".sbss") dword_800ABB3C;
 

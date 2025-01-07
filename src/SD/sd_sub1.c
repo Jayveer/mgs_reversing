@@ -2,9 +2,9 @@
 #include "SD/sd_ext.h"
 
 /* local inlines */
-inline int  vib_compute(void);
-inline void por_compute(void);
-inline void swpadset(int xfreq);
+extern inline int  vib_compute(void);
+extern inline void por_compute(void);
+extern inline void swpadset(int xfreq);
 
 void (*cntl_tbl[128])(void) = {
     /* 0x00 */ no_cmd,
