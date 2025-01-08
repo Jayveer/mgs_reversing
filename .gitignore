@@ -28,7 +28,6 @@ build/bin
 build/*.zip
 build/statcov.txt
 .vscode/c_cpp_properties.json
-.vscode/tasks.json
 .vscode/settings.json
 build/obj_tool/Release
 .vs

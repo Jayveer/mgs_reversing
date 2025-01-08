@@ -2154,7 +2154,7 @@ Windows:
 
 Linux:
 
-6.1 Get the gdb multiarch package
+6.1 Get the mipsel and gdb multiarch package
 ```
 sudo apt-get update
 sudo apt-get install -y g++-mipsel-linux-gnu gdb-multiarch make gzip
@@ -2168,9 +2168,10 @@ Windows and Linux
 ```
 Where the value for iso will be the mgs integral disk 1 bin file and the value for pcsxr_dir will be the folder which contains pcsx-redux
 
-8. Run the command `make` whilst in the `build` folder
-9. Once the elf file is built, you can run and debug it from vs code using the menu, or by pressing F5
-10. Make sure you set the pcsx-redux emulator 8MB by going to Configuration->Emulation and checking 8MB. This is because the dev overlay is appended in Dev memory from 2MB onwards
+8.  Set the gdbpath in launch.json to wherever your gdb-multiarch binary
+9.  Run the command `make` whilst in the `build` folder
+10. Once the elf file is built, you can run and debug it from vs code using the menu, or by pressing F5
+11. Make sure you set the pcsx-redux emulator 8MB by going to Configuration->Emulation and checking 8MB. This is because the dev overlay is appended in Dev memory from 2MB onwards
 
 ## How to decompile a function
 
