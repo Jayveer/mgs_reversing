@@ -197,7 +197,7 @@ int s16b_800C4820(HZD_SEG *find, int count, HZD_SEG *segs)
 
 int s16b_800C4848(HZD_FLR *find, int count, HZD_FLR *flrs)
 {
-    (int)find |= 0x80000000;
+    find = ( HZD_FLR * )( ( int )find | 0x80000000 );
 
     for (; count > 0; count--, flrs++)
     {

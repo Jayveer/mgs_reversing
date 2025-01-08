@@ -194,10 +194,12 @@ ACTTRANS AllTrans   = { crouch_trans, squat_trans, stand_trans };
 
 unsigned short short_8009ED6C = 980;
 
+#ifndef PSX_DEV_EXE
 ACTPACK actions_no_weapon_8009ED70 =
 {
     &NoneStill, &NoneMove, &AllTrans, &NoneDamage,  &NoneAttack, &e6_8009ED48[0], &e7_8009ED68
 };
+#endif
 
 ACTPACK weapon_actions_8009ED8C[10] =
 {
@@ -212,6 +214,13 @@ ACTPACK weapon_actions_8009ED8C[10] =
     {&GrenadeStill,  &GrenadeMove,  &AllTrans, &NoneDamage,  &GrenadeAttack,  &e6_8009ED48[7], &e7_8009ED68},
     {&NoneStill,     NULL,          &AllTrans, &NoneDamage,  &PSG1Attack,     &e6_8009ED48[3], &e7_8009ED68}
 };
+
+#ifdef PSX_DEV_EXE
+ACTPACK actions_no_weapon_8009ED70 =
+{
+    &NoneStill, &NoneMove, &AllTrans, &NoneDamage,  &NoneAttack, &e6_8009ED48[0], &e7_8009ED68
+};
+#endif
 
 void *dword_8009EEA4[] = {
     sna_anim_idle_8005275C,

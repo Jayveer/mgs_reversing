@@ -10,7 +10,11 @@
 
 void FS_StartDaemon( void )
 {
+#ifdef PSX_DEV_EXE
+    SetMem(8);
+#else
     SetMem(2);          // Set effective memory to 2MB (DTL-H2X00 has 8MB)
+#endif
     FS_CDInit();        // Init CD read system
     sio_output_stop();
 }

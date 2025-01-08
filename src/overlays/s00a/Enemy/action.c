@@ -1713,7 +1713,7 @@ SVECTOR s00a_dword_800C33DC = { -1024, 0,   0 };
 SVECTOR s00a_dword_800C33E4 = { 0,     0, 100 };
 SVECTOR s00a_dword_800C33EC = { -1024, 0,   0 };
 
-const char *s00a_off_800C33F4[3] = {
+char *s00a_off_800C33F4[3] = {
     "RATION",
     "SOCOM/BULLET * 12",
     "FA-MAS/BULLET * 25"

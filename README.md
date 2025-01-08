@@ -2074,6 +2074,7 @@ mgs_reversing also provides a helper script `run.py` that starts the built game 
         - Download a ZIP file with the emulator into `PCSX-REDUX-PATH` directory. [Click here for Windows builds](https://install.appcenter.ms/orgs/grumpycoders/apps/pcsx-redux-win64/distribution_groups/public). [Click here for Linux builds](https://install.appcenter.ms/orgs/grumpycoders/apps/pcsx-redux-linux64/distribution_groups/public). You don't have to unzip the file.
     3. You should run this command in a separate command prompt. While this command is running, you can rebuild the game (with `python3 build.py --variant=dev_exe`) and the tool will automatically relaunch the emulator with the latest build.
 
+
 ### Mac OS
 In order to build on Mac OS you need to install wine using brew
 ```
@@ -2135,6 +2136,41 @@ Finally, run
 to re-pack the `MGSI_D1` folder into a .bin/.cue pair that now contains the new executable instead of the original one. From now on, this is the only command to be executed every time you want to test a different version of the executable.
 
 Now you are ready to play the game with your favorite emulator by starting the file `mgsi_d1.cue`.
+
+### `psx dev` variant
+`psx dev` variant is a build which runs against a modern psx toolchain which allows you to build an elf file with which you can debug the c code in VSCode whilst the game is running in [PCSX-Redux](https://github.com/grumpycoders/pcsx-redux) using GDB. It requires a bit of initial setup.
+
+1. Install visual studio: https://code.visualstudio.com/
+2. Install the C/C++ extension package: https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools
+3. Install the gdb extension https://marketplace.visualstudio.com/items?itemName=webfreak.debug
+4. Download the converted psyq library from here: https://psx.arthus.net/sdk/Psy-Q/psyq-4.7-converted-full.7z
+5. Unzip the contents into the third_party\psyq folder making sure not to delete the inline_n.h that already resides inside third_party\psyq\include directory
+
+Windows:
+
+6.1. Install gcc-mipsel from here https://static.grumpycoder.net/pixel/mips/
+6.2. Add the path that you unzipped the downloaded file to to your windows PATH variables (Make sure you restart your computer after doing this)
+6.3. Download gdb multiarch from https://static.grumpycoder.net/pixel/gdb-multiarch-windows/
+
+Linux:
+
+6.1 Get the gdb multiarch package
+```
+sudo apt-get update
+sudo apt-get install -y g++-mipsel-linux-gnu gdb-multiarch make gzip
+```
+
+Windows and Linux
+7. Add the following variables to your settings.json file
+```
+"iso": "",
+"pcsxr_dir": "E:\\Games\\PS1\\console\\pcsx-redux-nightly-20792.20241217.2-x64"
+```
+Where the value for iso will be the mgs integral disk 1 bin file and the value for pcsxr_dir will be the folder which contains pcsx-redux
+
+8. Run the command `make` whilst in the `build` folder
+9. Once the elf file is built, you can run and debug it from vs code using the menu, or by pressing F5
+10. Make sure you set the pcsx-redux emulator 8MB by going to Configuration->Emulation and checking 8MB. This is because the dev overlay is appended in Dev memory from 2MB onwards
 
 ## How to decompile a function
 
