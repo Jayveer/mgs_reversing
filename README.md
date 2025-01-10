@@ -2143,28 +2143,43 @@ Now you are ready to play the game with your favorite emulator by starting the f
 1. Install visual studio: https://code.visualstudio.com/
 2. Install the C/C++ extension package: https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools
 3. Install the gdb extension https://marketplace.visualstudio.com/items?itemName=webfreak.debug
-4. Download the converted psyq library from here: https://psx.arthus.net/sdk/Psy-Q/psyq-4.7-converted-full.7z
-5. Unzip the contents into the third_party\psyq folder making sure not to delete the inline_n.h that already resides inside third_party\psyq\include directory
 
 Windows:
 
-6.1. Install gcc-mipsel from here https://static.grumpycoder.net/pixel/mips/
-6.2. Add the path that you unzipped the downloaded file to to your windows PATH variables (Make sure you restart your computer after doing this)
-6.3. Download gdb multiarch from https://static.grumpycoder.net/pixel/gdb-multiarch-windows/
+4.1. Install gcc-mipsel from here https://static.grumpycoder.net/pixel/mips/
+4.2. Add the path that you unzipped the downloaded file to to your windows PATH variables (Make sure you restart your computer after doing this)
+4.3. Download gdb multiarch from https://static.grumpycoder.net/pixel/gdb-multiarch-windows/
 
 Linux:
 
-6.1 Get the mipsel and gdb multiarch package
+4.1 Get the mipsel and gdb multiarch package
 ```
 sudo apt-get update
 sudo apt-get install -y g++-mipsel-linux-gnu gdb-multiarch make gzip
 ```
 
 Windows and Linux
+5. Make a converted version of the 4.4 psyq library for modern toolchains, this can be done by doing the following;
+
+run psyq-obj-parser (which can be found in the tools foleder of PCSX Redux) on all the .obj files in the lib folders
+
+```
+psyq-obj-parser input.obj -o output.o
+```
+
+run ar (which is a part of mipsel so should already be a part of your PATH) in each of the folders to create the .a files
+
+```
+ar rcs libsomething.a *.o
+```
+
+Alternatively you can download the converted psyq library for 7.7 from here, however there will be bugs in the game: https://psx.arthus.net/sdk/Psy-Q/psyq-4.7-converted-full.7z
+6. Copy your converted files over into the third_party\psyq folder making sure not to delete the inline_n.h that already resides inside third_party\psyq\include directory
+
 7. Add the following variables to your settings.json file
 ```
 "iso": "",
-"pcsxr_dir": "E:\\Games\\PS1\\console\\pcsx-redux-nightly-20792.20241217.2-x64"
+"pcsxr_dir": ""
 ```
 Where the value for iso will be the mgs integral disk 1 bin file and the value for pcsxr_dir will be the folder which contains pcsx-redux
 
